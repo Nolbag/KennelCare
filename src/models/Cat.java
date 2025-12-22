@@ -1,5 +1,7 @@
 package models;
 
+import utils.Utilities;
+
 public class Cat extends Pet{
     private boolean indoorCat = false;
     private String favouriteToy = "Unknown";
@@ -38,7 +40,7 @@ public class Cat extends Pet{
     
     @Override
     public String toString() {
-        return super.toString() + " Indoor Cat= " + indoorCat + ", favouriteToy= " + favouriteToy;
+        return super.toString() + " Indoor Cat= " + Utilities.booleanToYN(indoorCat) + ", favouriteToy= " + favouriteToy;
     }
     
 }

@@ -54,7 +54,7 @@ public class Dog extends Pet{
         
         @Override
         public String toString() {
-            return super.toString() + " breed= " + breed + ", dangerousBreed= " + dangerousBreed + ", neutered= " + neutered;
+            return super.toString() + " breed = " + breed + ", dangerous breed= " + Utilities.booleanToYN(dangerousBreed) + ", neutered = " + Utilities.booleanToYN(neutered);
         }
         
         

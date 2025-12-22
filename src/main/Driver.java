@@ -5,7 +5,7 @@ import models.*;
 import utils.*;
 
 public class Driver {
-    
+    // creates dayCare object
     private DayCare dayCare = new DayCare();
     
     public static void main(String[] args) {
