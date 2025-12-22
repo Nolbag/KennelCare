@@ -259,8 +259,9 @@ public class Driver {
                                         if (dayCare.numberOfPets() > 0){
                                             //Reads the next int entered by the user and stores it in the variable idToDelete
                                             int idToDelete = ScannerInput.readNextInt("Enter ID of pet to be deleted ==> ");
-                                            //Calls the deletePetId method
+                                            //Creates a variable Pet called petToDelete. calss the deletePetId method from DayCare and passes idToDelete
                                             Pet petToDelete = dayCare.deletePetId(idToDelete);
+                                            //If petToDelete is not null prints the message to the terminal along with the toString of the pet deleted.
                                             if (petToDelete != null){
                                                 System.out.println("Delete Successful! Deleted Pet: " + petToDelete.toString());
                                             }
@@ -270,6 +271,7 @@ public class Driver {
                                         }
                                     }
                                     case 2 -> {
+                                        //prints a list of all pets in the array list
                                         listPets();
                                         if(dayCare.numberOfPets() > 0){
                                             int indexToDelete = ScannerInput.readNextInt("Enter Index of pet to delete ==>");
