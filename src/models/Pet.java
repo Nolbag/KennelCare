@@ -44,8 +44,9 @@ public class Pet {
     }
     
     public void setOwner(String owner) {
-        if (Utilities.validStringlength(owner, 20))
+        if (Utilities.validStringlength(owner, 20)){
             this.owner = owner;
+        }
     }
     
     public int getAge() {
@@ -57,7 +58,7 @@ public class Pet {
     }
     
     public String toString() {
-        return "Pet id = " + id + ", name = " + name + ", owner = " + owner + ", age = " + age + "days attending = "
+        return "Pet id = " + id + ", name = " + name + ", owner = " + owner + ", age = " + age + ", days attending = "
         + Arrays.toString(daysAttending) + ", sex = " + sex;
     }
     
@@ -80,7 +81,7 @@ public class Pet {
     public void checkIn(int dayIndex){
         // if valid dayIndex >=0 <= 5 
         //  assign that element of the array to true
-        if (Utilities.validRange(dayIndex, 0, 5)){
+        if (Utilities.validRange(dayIndex, 0, 4)){
             daysAttending[dayIndex] = true;
         }
     }
@@ -88,7 +89,7 @@ public class Pet {
     public void checkOut(int dayIndex){
         // if valid dayIndex >=0 <= 5 
         //  assign that element of the array to false
-        if (Utilities.validRange(dayIndex, 0, 5)){
+        if (Utilities.validRange(dayIndex, 0, 4)){
             daysAttending[dayIndex] = false;
         }
         

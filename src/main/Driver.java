@@ -296,14 +296,14 @@ public class Driver {
                                 int option = ScannerInput.readNextInt("""
                                     --------------------Reports Menu----------------
                                     |   1) List all pets                           |
-                                    |   2) List all cogs                           |
+                                    |   2) List all dogs                           |
                                     |   3) List all cats                           |
                                     |   4) List all dangerous dogs                 |
                                     |   5) List indoor cats                        |
                                     |   6) List all dogs older than a certain age  |
                                     |   7) List all cats by favourite toy          |
                                     |   8) List all neutered dogs                  |
-                                    |   9) List produce weekly income report       |
+                                    |   9) Produce weekly income report            |
                                     ------------------------------------------------
                                     ==>""");
                                     switch (option) {

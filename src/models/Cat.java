@@ -40,7 +40,7 @@ public class Cat extends Pet{
     
     @Override
     public String toString() {
-        return super.toString() + " Indoor Cat= " + Utilities.booleanToYN(indoorCat) + ", favouriteToy= " + favouriteToy;
+        return super.toString() + " indoor cat= " + Utilities.booleanToYN(indoorCat) + ", favourite toy= " + favouriteToy;
     }
     
 }
