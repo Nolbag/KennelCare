@@ -58,7 +58,7 @@ public class Pet {
     }
     
     public String toString() {
-        return "Pet id = " + id + ", name = " + name + ", owner = " + owner + ", age = " + age + ", days attending = "
+        return " Pet id = " + id + ", name = " + name + ", owner = " + owner + ", age = " + age + ", days attending = "
         + Arrays.toString(daysAttending) + ", sex = " + sex;
     }
     

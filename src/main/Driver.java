@@ -156,7 +156,8 @@ public class Driver {
                             char sex = ScannerInput.readNextChar("Is the cat male or female? (M/F): ");
                             char input = ScannerInput.readNextChar("Is the cat an indoor cat? (Y/N): ");
                             boolean indoorCat = utils.Utilities.YNtoBoolean(input);
-                            String favouriteToy = ScannerInput.readNextLine("Favourite toy: ");
+                            System.out.println(CatToyUtility.getCatToys());
+                            String favouriteToy = ScannerInput.readNextLine("Enter a favourite toy from the above list: ");
                             isAdded = dayCare.addPet(new Cat(name, owner, age, daysAttending, sex, indoorCat, favouriteToy));
                         }
                         default -> System.out.println("Invalid option entered: " + option);
@@ -225,7 +226,8 @@ public class Driver {
                                             char sex = ScannerInput.readNextChar("Is the cat male or female? (M/F): ");
                                             char input = ScannerInput.readNextChar("Is the cat an indoor cat? (Y/N): ");
                                             boolean indoorCat = utils.Utilities.YNtoBoolean(input);
-                                            String favouriteToy = ScannerInput.readNextLine("Favourite toy: ");
+                                            System.out.println(CatToyUtility.getCatToys());
+                                            String favouriteToy = ScannerInput.readNextLine("Enter a favourite toy from the above list: ");
                                             isUpdated = dayCare.updateCat(idToUpdate, new Cat(name, owner, age, daysAttending, sex, indoorCat, favouriteToy));
                                         }
                                     }
