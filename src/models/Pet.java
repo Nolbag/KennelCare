@@ -79,31 +79,31 @@ public class Pet {
     }
     
     public void checkIn(int dayIndex){
-        // if valid dayIndex >=0 <= 5 
-        //  assign that element of the array to true
+        // if valid dayIndex >=0 <= 5, changed to 0 - 4 as there are only 5 indexes in the array.
         if (Utilities.validRange(dayIndex, 0, 4)){
+            //  assign that element of the array to true
             daysAttending[dayIndex] = true;
         }
     }
     
     public void checkOut(int dayIndex){
-        // if valid dayIndex >=0 <= 5 
-        //  assign that element of the array to false
+        // if valid dayIndex >=0 <= 5, changed to 0 - 4 as there are only 5 indexes in the array.
         if (Utilities.validRange(dayIndex, 0, 4)){
+            //assign that element of the array to false
             daysAttending[dayIndex] = false;
         }
         
     }
     public int numOfDaysInKennel(){
-        // iterates through array
-        // Adds 1 to a variable if the element of the array is true
-        // returns variable
         int numOfDaysInKennel = 0;
+        // iterates through array
         for (boolean day: daysAttending) {
             if (day) {
+                // Adds 1 to a variable if the element of the array is true
                 numOfDaysInKennel++;
             }
         }
+        // returns variable
         return numOfDaysInKennel;
     }
     public double calculateWeeklyFee(int numberOfDaysInKennel){

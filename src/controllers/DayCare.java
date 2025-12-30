@@ -129,6 +129,7 @@ public class DayCare {
         if (listDogs.isEmpty()){
             return "No dogs are in the kennel";
         }
+        // Returns list of dogs
         else return listDogs;
     }
     
@@ -418,6 +419,7 @@ public class DayCare {
                 }
             }
         }
+        // Returns the number of indoor cats
         return num;
     }
     
@@ -522,6 +524,8 @@ public class DayCare {
     */
     public boolean updateDog(int idToUpdate, Dog updateDetails){
         
+        /*Creates an object of pet and assigns it the value of the pet found at the id passed 
+        to the method using the getPetById method */
         Pet foundPet = getPetById(idToUpdate);
         
         // Uses a for loop to scan through the Array List
@@ -529,7 +533,7 @@ public class DayCare {
             // if the ID provided matches i AND the pet at i is a dog
             if ((pets.get(i).getId() == idToUpdate) && (pets.get(i) instanceof Dog)){
                 /* sets the details of the dog found to the new details provided.
-                Uses get methods to obtain the spefcific variable required to update the field.*/
+                Uses get methods to obtain the specific variable required to update the field.*/
                 foundPet.setName(updateDetails.getName());
                 foundPet.setOwner(updateDetails.getOwner());
                 foundPet.setAge(updateDetails.getAge());
@@ -556,13 +560,16 @@ public class DayCare {
     */
     public boolean updateCat(int idToUpdate, Cat updateDetails){
         
+        /*Creates an object of pet and assigns it the value of the pet found at the id passed 
+        to the method using the getPetById method */
         Pet foundPet = getPetById(idToUpdate);
         
         // Uses a for loop to scan through the Array List
         for (int i = 0; i < pets.size(); i++){
             // if the ID provided matches i AND the pet at i is a cat
             if ((pets.get(i).getId() == idToUpdate) && (pets.get(i) instanceof Cat)){
-                // sets the details of the cat found to the new details provided
+                /* sets the details of the cat found to the new details provided.
+                Uses get methods to obtain the updated details from the cat object passed.*/
                 foundPet.setName(updateDetails.getName());
                 foundPet.setOwner(updateDetails.getOwner());
                 foundPet.setAge(updateDetails.getAge());
@@ -632,6 +639,7 @@ public class DayCare {
         if (listPetsByOwner.isEmpty()){
             return "No Pets for " + petOwner;
         }
+        // Returns the string to the calling method.
         return listPetsByOwner;
     }
     
