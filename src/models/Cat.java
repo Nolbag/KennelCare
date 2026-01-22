@@ -31,15 +31,20 @@ public class Cat extends Pet{
     }
     
     @Override
+    // Overrides the method of the same name in the superclass
     public double calculateWeeklyFee(int numOfDaysInKennel){
+        // If indoorCat is true calculates the weekly fee based on that rate
         if (indoorCat){
-            return numOfDaysInKennel * 25 + 5;
+            return numOfDaysInKennel * (20 + 5);
         }
+        // Otherwise uses the standard rate rate to calculate weekly fee
         else return numOfDaysInKennel * 20;
     }
     
     @Override
+    // Overrides the method of the same name in the superclass
     public String toString() {
+        // Returns the Superclass toString and adds the specific details relating to the subclass
         return super.toString() + " indoor cat= " + Utilities.booleanToYN(indoorCat) + ", favourite toy= " + favouriteToy;
     }
     

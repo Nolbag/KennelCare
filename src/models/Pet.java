@@ -98,6 +98,7 @@ public class Pet {
         int numOfDaysInKennel = 0;
         // iterates through array
         for (boolean day: daysAttending) {
+            // Checks if day is true
             if (day) {
                 // Adds 1 to a variable if the element of the array is true
                 numOfDaysInKennel++;

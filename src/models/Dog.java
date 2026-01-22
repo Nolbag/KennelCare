@@ -45,15 +45,20 @@ public class Dog extends Pet{
         }
         
         @Override
+        // Overrides the method of the same name in the superclass
         public double calculateWeeklyFee(int numberOfDaysInKennel){
+            // If dangerousBreed is true calculates the weekly fee based on that rate
             if (dangerousBreed){
                 return DANGEROUS_DAILY_RATE * numberOfDaysInKennel;
             }
+            // Otherwise uses the nondangerous rate to calculate weekly fee
             else return NONDANGEROUS_DAILY_RATE * numberOfDaysInKennel;
         }
         
         @Override
+        // Overrides the method of the same name in the superclass
         public String toString() {
+            // Returns the Superclass toString and adds the specific details relating to the subclass
             return super.toString() + " breed = " + breed + ", dangerous breed= " + Utilities.booleanToYN(dangerousBreed) + ", neutered = " + Utilities.booleanToYN(neutered);
         }
         

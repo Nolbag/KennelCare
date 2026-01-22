@@ -102,11 +102,12 @@ public class Driver {
                     case 3 -> deletePet();
                     case 4 -> listPets();
                     case 0 -> runMenu();
+                    // If an invalid option is entered prints the below String followed by the option entered
                     default -> System.out.println("Invalid option entered: " + option);
                 }
             }
             private void addPet(){
-                
+                // Creates boolean isAdded and sets it to false as default.
                 boolean isAdded = false;
                 
                 int option = ScannerInput.readNextInt("""
@@ -118,9 +119,13 @@ public class Driver {
                     
                     switch(option){
                         case 1 -> {
+                            // Reads next String input by the user and stores it as name
                             String name = ScannerInput.readNextLine("Enter the name of the dog: ");
+                            // Reads next String input by the user and stores it as owner
                             String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
+                            // Reads next int input by the user and stores it as age
                             int age = ScannerInput.readNextInt("Enter age: ");
+                            // Reads next String input by the user and stores it as breed
                             String breed = ScannerInput.readNextLine("Enter breed: ");
                             // creates a boolean array to store true and false values for days attending
                             boolean[] daysAttending = new boolean[5];
@@ -134,32 +139,52 @@ public class Driver {
                                 char input = ScannerInput.readNextChar("Is the dog in the kennel on " + dayNames[i] + "? (Y/N): ");
                                 daysAttending[i] = Utilities.YNtoBoolean(input);
                             }
+                            // Reads next char input by the user and stores it as sex
                             char sex = ScannerInput.readNextChar("Is the dog male or female? (M/F): ");
+                            // Reads next char input by the user and stores it as input
                             char input = ScannerInput.readNextChar("Is the dog a dangerous bread? (Y/N): ");
+                            // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as dangerousBreed
                             boolean dangerousBreed = Utilities.YNtoBoolean(input);
+                            // Reads next char input by the user and stores it as input
                             input = ScannerInput.readNextChar("Is the dog neutered? (Y/N): ");
+                            // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as neutered
                             boolean neutered = Utilities.YNtoBoolean(input);
-                            // sets boolean isAdded to the return value of the addPet method in dayCare.
+                            // Calls addPet from DayCare class and passes the variables obtained above. Stores returned value as boolean isAdded.
                             isAdded = dayCare.addPet(new Dog(name, owner, age, daysAttending, sex, breed, dangerousBreed, neutered));
                         }
                         case 2 ->{
+                            // Reads next String input by the user and stores it as name
                             String name = ScannerInput.readNextLine("Enter the name of the cat: ");
+                            // Reads next String input by the user and stores it as owner
                             String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
+                            // Reads next int input by the user and stores it as age
                             int age = ScannerInput.readNextInt("Enter age: ");
-                            
+                            // creates a boolean array to store true and false values for days attending
                             boolean[] daysAttending = new boolean[5];
+                            // creates a String array dayNames to store the days of the week to be printed when asking the user to if the pet is attending.
                             String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+                            /* for loop asking the user to input Y or N to confirm if a pet is or isn't attending the kennel on a certain day.
+                            char input uses ScannerInput to read the input from the user.
+                            dayNames[i] is used to update the day of the week from the array each time the code loops.
+                            daysAttending[i] stores the input converted to a boolean using the YNtoBoolean method from the Utilities class at the current array index */
                             for (int i = 0; i < 5; i++){
                                 char input = ScannerInput.readNextChar("Is the cat in the kennel on " + dayNames[i] + "? (Y/N): ");
                                 daysAttending[i] = utils.Utilities.YNtoBoolean(input);
                             }
+                            // Reads next char input by the user and stores it as sex
                             char sex = ScannerInput.readNextChar("Is the cat male or female? (M/F): ");
+                            // Reads next char input by the user and stores it as input
                             char input = ScannerInput.readNextChar("Is the cat an indoor cat? (Y/N): ");
+                            // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as indoorCat
                             boolean indoorCat = utils.Utilities.YNtoBoolean(input);
+                            // Calls and prints getCatToys from CatToyUtility class.
                             System.out.println(CatToyUtility.getCatToys());
+                            // Reads next String input by the user and stores it as favouriteToy
                             String favouriteToy = ScannerInput.readNextLine("Enter a favourite toy from the above list: ");
+                            // Calls addPet from DayCare class and passes the variables obtained above. Stores returned value as boolean isAdded.
                             isAdded = dayCare.addPet(new Cat(name, owner, age, daysAttending, sex, indoorCat, favouriteToy));
                         }
+                        // If an invalid option is entered prints the below String followed by the option entered
                         default -> System.out.println("Invalid option entered: " + option);
                         
                     }
@@ -184,68 +209,104 @@ public class Driver {
                             
                             switch (option){
                                 case 1 -> {
+                                    // Call the listDogs method
                                     listDogs();
+                                    // If the number of dogs in the ArrayList is greater than 0 enters the if statement
                                     if(dayCare.numberOfDogs() > 0) {
+                                        // Reads the next int input by the user and stores it as iDToUpdate
                                         int idToUpdate = ScannerInput.readNextInt("Enter the ID of the pet to update ==> ");
-                                        if(!dayCare.isValidId(idToUpdate)) {
-                                            String name = ScannerInput.readNextLine("Enter the name of the dog: ");
-                                            String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
-                                            int age = ScannerInput.readNextInt("Enter age: ");
-                                            String breed = ScannerInput.readNextLine("Enter breed: ");
-                                            
-                                            boolean[] daysAttending = new boolean[5];
-                                            String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-                                            for (int i = 0; i < 5; i++){
-                                                char input = ScannerInput.readNextChar("Is the dog in the kennel on " + dayNames[i] + "? (Y/N): ");
-                                                daysAttending[i] = utils.Utilities.YNtoBoolean(input);
-                                            }
-                                            char sex = ScannerInput.readNextChar("Is the dog male or female? (M/F): ");
-                                            char input = ScannerInput.readNextChar("Is the dog a dangerous bread? (Y/N): ");
-                                            boolean dangerousBreed = utils.Utilities.YNtoBoolean(input);
-                                            input = ScannerInput.readNextChar("Is the dog neutered? (Y/N): ");
-                                            boolean neutered = utils.Utilities.YNtoBoolean(input);
-                                            isUpdated = dayCare.updateDog(idToUpdate, new Dog(name, owner, age, daysAttending, sex, breed, dangerousBreed, neutered));
+                                        // Reads next String input by the user and stores it as name
+                                        String name = ScannerInput.readNextLine("Enter the name of the dog: ");
+                                        // Reads next String input by the user and stores it as owner
+                                        String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
+                                        // Reads next int input by the user and stores it as age
+                                        int age = ScannerInput.readNextInt("Enter age: ");
+                                        // Reads next String input by the user and stores it as breed
+                                        String breed = ScannerInput.readNextLine("Enter breed: ");
+                                        // creates a boolean array to store true and false values for days attending
+                                        // creates a String array dayNames to store the days of the week to be printed when asking the user to if the pet is attending.
+                                        boolean[] daysAttending = new boolean[5];
+                                        String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+                                        /* for loop asking the user to input Y or N to confirm if a pet is or isn't attending the kennel on a certain day.
+                                        char input uses ScannerInput to read the input from the user.
+                                        dayNames[i] is used to update the day of the week from the array each time the code loops.
+                                        daysAttending[i] stores the input converted to a boolean using the YNtoBoolean method from the Utilities class at the current array index */
+                                        for (int i = 0; i < 5; i++){
+                                            char input = ScannerInput.readNextChar("Is the dog in the kennel on " + dayNames[i] + "? (Y/N): ");
+                                            daysAttending[i] = utils.Utilities.YNtoBoolean(input);
                                         }
+                                        // Reads next char input by the user and stores it as sex
+                                        char sex = ScannerInput.readNextChar("Is the dog male or female? (M/F): ");
+                                        // Reads next char input by the user and stores it as input
+                                        char input = ScannerInput.readNextChar("Is the dog a dangerous bread? (Y/N): ");
+                                        // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as dangerousBreed
+                                        boolean dangerousBreed = utils.Utilities.YNtoBoolean(input);
+                                        // Reads next char input by the user and stores it as input
+                                        input = ScannerInput.readNextChar("Is the dog neutered? (Y/N): ");
+                                        // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as neutered
+                                        boolean neutered = utils.Utilities.YNtoBoolean(input);
+                                        // Calls updateDog from DayCare class and passes the variables obtained above. Stores returned value as boolean isUpdated.
+                                        isUpdated = dayCare.updateDog(idToUpdate, new Dog(name, owner, age, daysAttending, sex, breed, dangerousBreed, neutered));
                                     }
                                 }
                                 case 2 -> {
+                                    // Call the listCats method
                                     listCats();
+                                    // If the number of cats in the ArrayList is greater than 0 enters the if statement
                                     if(dayCare.numberOfCats() > 0){
+                                        // Reads the next int input by the user and stores it as iDToUpdate
                                         int idToUpdate = ScannerInput.readNextInt("Enter the ID of the pet to update ==> ");
-                                        if(!dayCare.isValidId(idToUpdate)) {
-                                            String name = ScannerInput.readNextLine("Enter the name of the cat: ");
-                                            String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
-                                            int age = ScannerInput.readNextInt("Enter age: ");
-                                            
-                                            boolean[] daysAttending = new boolean[5];
-                                            String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-                                            for (int i = 0; i < 5; i++){
-                                                char input = ScannerInput.readNextChar("Is the cat in the kennel on " + dayNames[i] + "? (Y/N): ");
-                                                daysAttending[i] = utils.Utilities.YNtoBoolean(input);
-                                            }
-                                            char sex = ScannerInput.readNextChar("Is the cat male or female? (M/F): ");
-                                            char input = ScannerInput.readNextChar("Is the cat an indoor cat? (Y/N): ");
-                                            boolean indoorCat = utils.Utilities.YNtoBoolean(input);
-                                            System.out.println(CatToyUtility.getCatToys());
-                                            String favouriteToy = ScannerInput.readNextLine("Enter a favourite toy from the above list: ");
-                                            isUpdated = dayCare.updateCat(idToUpdate, new Cat(name, owner, age, daysAttending, sex, indoorCat, favouriteToy));
+                                        // Reads next String input by the user and stores it as name
+                                        String name = ScannerInput.readNextLine("Enter the name of the cat: ");
+                                        // Reads next String input by the user and stores it as owner
+                                        String owner = ScannerInput.readNextLine("Enter the name of the owner: ");
+                                        // Reads next int input by the user and stores it as age
+                                        int age = ScannerInput.readNextInt("Enter age: ");
+                                        // creates a boolean array to store true and false values for days attending
+                                        boolean[] daysAttending = new boolean[5];
+                                        // creates a String array dayNames to store the days of the week to be printed when asking the user to if the pet is attending.
+                                        String[] dayNames = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+                                        /* for loop asking the user to input Y or N to confirm if a pet is or isn't attending the kennel on a certain day.
+                                        char input uses ScannerInput to read the input from the user.
+                                        dayNames[i] is used to update the day of the week from the array each time the code loops.
+                                        daysAttending[i] stores the input converted to a boolean using the YNtoBoolean method from the Utilities class at the current array index */
+                                        for (int i = 0; i < 5; i++){
+                                            char input = ScannerInput.readNextChar("Is the cat in the kennel on " + dayNames[i] + "? (Y/N): ");
+                                            daysAttending[i] = utils.Utilities.YNtoBoolean(input);
                                         }
+                                        // Reads next char input by the user and stores it as sex
+                                        char sex = ScannerInput.readNextChar("Is the cat male or female? (M/F): ");
+                                        // Reads next char input by the user and stores it as input
+                                        char input = ScannerInput.readNextChar("Is the cat an indoor cat? (Y/N): ");
+                                        // Calls YNtoBoolean from Utilities class and pass char input. Stores returned boolean as indoorCat
+                                        boolean indoorCat = utils.Utilities.YNtoBoolean(input);
+                                        // Calls and prints getCatToys from CatToyUtility class.
+                                        System.out.println(CatToyUtility.getCatToys());
+                                        // Reads next String input by the user and stores it as favouriteToy
+                                        String favouriteToy = ScannerInput.readNextLine("Enter a favourite toy from the above list: ");
+                                        // Calls updateCat from DayCare class and passes the variables obtained above. Stores returned value as boolean isUpdated.
+                                        isUpdated = dayCare.updateCat(idToUpdate, new Cat(name, owner, age, daysAttending, sex, indoorCat, favouriteToy));
                                     }
                                 }
+                                // If an invalid option is entered prints the below String followed by the option entered
                                 default -> System.out.println("Invalid option entered: " + option);
                             }
+                            // If isUpdated is true enters the if statement and prints out a confirmation message
                             if (isUpdated) {
                                 System.out.println("Pet Updated Successfully");
+                            // Otherwise prints message stating no pet updated.
                             } else {
                                 System.out.println("No pet Updated");
                             }
                         }
                         else{
+                            // If the ArrayList is empty prints the below String
                             System.out.println("No pets added yet");
                         }
                     }
                     
                     private void deletePet(){
+                        // Enters the if statement if there are pets in the ArrayList
                         if (dayCare.numberOfPets() > 0) {
                             int option = ScannerInput.readNextInt("""
                     ---------Delete Pet---------
@@ -267,6 +328,7 @@ public class Driver {
                                             if (petToDelete != null){
                                                 System.out.println("Delete Successful! Deleted Pet: " + petToDelete.toString());
                                             }
+                                            // Otherwise prints the below message
                                             else {
                                                 System.out.println("Delete NOT successful");
                                             }
@@ -275,17 +337,24 @@ public class Driver {
                                     case 2 -> {
                                         //prints a list of all pets in the array list
                                         listPets();
+                                        // Enters the if statement if the number of pets in the ArrayList isn't zero.
                                         if(dayCare.numberOfPets() > 0){
+                                            // Reads the next int input by the user and stores it as indexToDelete
                                             int indexToDelete = ScannerInput.readNextInt("Enter Index of pet to delete ==>");
+                                            // Sets the pet object petToDelete to the value returned by deletePetIndex in the DayCare class.
                                             Pet petToDelete = dayCare.deletePetIndex(indexToDelete);
+                                            // Enters the if statement if petToDelete is not empty
                                             if (petToDelete != null){
+                                                // Prints confirmation message and toString for the pet deleted.
                                                 System.out.println("Delete Successful! Deleted Pet: " + petToDelete.toString());
                                             }
                                             else {
+                                                // Prints unsuccessful message if the if statement condition isn't met.
                                                 System.out.println("Delete NOT successful");
                                             }
                                         }
                                     }
+                                    // If an invalid option is entered prints the below String followed by the option entered
                                     default -> System.out.println("Invalid option entered: " + option);
                                 }
                             }
@@ -294,6 +363,7 @@ public class Driver {
                         //  Option 2 - Reports Menu
                         //--------------------------
                         private void reportsMenu(){
+                            //If the number of pets in the ArrayList if greater than zero enters the if statement
                             if (dayCare.numberOfPets() > 0) {
                                 int option = ScannerInput.readNextInt("""
                                     --------------------Reports Menu----------------
@@ -321,51 +391,63 @@ public class Driver {
                                         default -> System.out.println("Invalid option entered: " + option);
                                     }
                                 }
+                                // If an invalid option is entered prints the below String followed by the option entered
                                 else System.out.println("Option Invalid - No pets stored");
                             }
                             
                             private void listPets(){
                                 System.out.println("List of all Pets: ");
+                                // Calls listAllPets from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllPets());
                             }
                             
                             private void listDogs(){
                                 System.out.println("List of all Dogs: ");
+                                // Calls listAllDogs from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllDogs());
                             }
                             
                             private void listCats(){
                                 System.out.println("List of all Cats: ");
+                                // Calls listAllCats from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllCats());
                             }
                             
                             private void listDangerousDogs(){
                                 System.out.println("List of Dangerous Dogs: ");
+                                // Calls listAllDangerousDogs from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllDangerousDogs());
                             }
                             
                             private void listIndoorCats(){
                                 System.out.println("List of Indoor Cats: ");
+                                // Calls listAllIndoorCats from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllIndoorCats());
                             }
                             
                             private void listDogsOverAge(){
+                                // Reads in an int from the user.
                                 int age = ScannerInput.readNextInt("Enter minimum age: ");
                                 System.out.println("List of dogs older than " + age + "years old: ");
+                                // Calls listDogsOverAge from DayCare class, passes the int age and prints the String returned from the method.
                                 System.out.println(dayCare.listDogsOverAge(age));
                             }
                             private void listCatsByToy(){
+                                // Reads in a String from the user.
                                 String favouriteToy = ScannerInput.readNextLine("Enter favourite Toy: ");
                                 System.out.println("List of cats with favourite toy" + favouriteToy + ": ");
+                                // Passes the String favouriteToy to the method listCatsByToy in DayCare class and prints the returned String.
                                 System.out.println(dayCare.listCatsByToy(favouriteToy));
                             }
                             
                             private void listNeuteredDogs(){
                                 System.out.println("List of NeuteredDogs: ");
+                                // Calls listAllNeuteredDogs from DayCare class and prints the returned string.
                                 System.out.println(dayCare.listAllNeuteredDogs());
                             }
                             
                             private void weeklyIncome(){
+                                // Calls getWeeklyIncome from DayCare class and prints the below String followed by the returned value.
                                 System.out.println("Weekly income is: €" + dayCare.getWeeklyIncome());
                             }
                             
@@ -375,6 +457,7 @@ public class Driver {
                             //---------------------
                             // TODO search by different criteria i.e. look at the list methods and give options based on that.
                             private void searchPets(){
+                                // If the number of pets in the ArrayList is greater than 0 enters the if statement
                                 if (dayCare.numberOfPets() > 0) {
                                     int option = ScannerInput.readNextInt("""
                                         ---------------Pet Search------------------
@@ -389,31 +472,43 @@ public class Driver {
                                             case 2 -> searchById();
                                             case 3 -> searchByOwner();
                                             case 4 -> searchByOwnerBreedAge();
+                                            // If an invalid option is entered prints the below String followed by the option entered
                                             default -> System.out.println("Invalid option entered: " + option);
                                         }
                                     }
+                                    // If no pets are stored in the ArrayList prints the below String
                                     else System.out.println("Option Invalid - No pets stored");
                                 }
                                 
                                 private void searchByIndex(){
+                                    // Reads the next int entered by the user
                                     int indexToGet = ScannerInput.readNextInt("Enter index: ");
+                                    // Calls getPetByIndex from DayCare class and passes int indexToGet. Prints the value returned.
                                     System.out.println(dayCare.getPetByIndex(indexToGet));
                                 }
                                 
                                 private void searchById(){
+                                    // Reads the next int entered by the user
                                     int idToGet = ScannerInput.readNextInt("Enter ID: ");
+                                    // Calls getPetById from DayCare class and passes int idToGet. Prints the value returned.
                                     System.out.println(dayCare.getPetById(idToGet));
                                 }
                                 
                                 private void searchByOwner(){
+                                    // Reads the next String entered by the user
                                     String ownerToSearch = ScannerInput.readNextLine("Enter owner: ");
+                                    // Calls getPetByOwnerName from DayCare class and passes int idToGet. Prints the value returned.
                                     System.out.println(dayCare.getPetsByOwnersName(ownerToSearch));
                                 }
                                 
                                 private void searchByOwnerBreedAge(){
+                                    // Reads the next String entered by the user and stores it in String ownerToSearch
                                     String ownerToSearch = ScannerInput.readNextLine("Enter owner: ");
+                                    // Reads the next String entered by the user and stores it in String breedToSearch
                                     String breedToSearch = ScannerInput.readNextLine("Enter breed: ");
+                                    // Reads the next int entered by the user and stores it in int ageToSearch
                                     int ageToSearch = ScannerInput.readNextInt("Enter age: ");
+                                    // Passes the variables obtained above to the method findDogByOwnerAndBreedAndAge in the DayCare class and prints the returned value
                                     System.out.println(dayCare.findDogByOwnerAndBreedAndAge(ownerToSearch, breedToSearch, ageToSearch));
                                 }
                                 
@@ -421,6 +516,7 @@ public class Driver {
                                 //  Option 3 - Count
                                 //---------------------
                                 private void countPets(){
+                                    // If the number of pets in the ArrayList is greater than 0 enters the if statement
                                     if (dayCare.numberOfPets() > 0) {
                                         int option = ScannerInput.readNextInt("""
                                         -----------------Count Pets----------------
@@ -439,32 +535,39 @@ public class Driver {
                                                 case 4 -> numOfCats();
                                                 case 5 -> numOfDangerousDogs();
                                                 case 6 -> numOfIndoorCats();
+                                                // If an invalid option is entered prints the below String followed by the option entered
                                                 default -> System.out.println("Invalid option entered: " + option);
                                             }
                                         }
                                     }
                                     
                                     private void averageNumOfDays(){
+                                        // Calls getAverageNumDaysPerWeek from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.getAverageNumDaysPerWeek() + " days");
                                     }
                                     
                                     private void numOfPets(){
+                                        // Calls numberOfPets from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.numberOfPets() + " pets");
                                     }
                                     
                                     private void numOfDogs(){
+                                        // Calls numberOfDogs from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.numberOfDogs() + " dogs");
                                     }
                                     
                                     private void numOfCats(){
+                                        // Calls numOfCats from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.numberOfCats() + " cats");
                                     }
                                     
                                     private void numOfDangerousDogs(){
+                                        // Calls numOfDangerousDogs from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.numberOfDangerousDogs() + " dangerous dogs");
                                     }
                                     
                                     private void numOfIndoorCats(){
+                                        // Calls numOfIndoorCats from the DayCare class and prints the returned value followed by the String below
                                         System.out.println(dayCare.numberOfIndoorCats());
                                     }
                                     
@@ -474,16 +577,22 @@ public class Driver {
                                     
                                     private void savePets(){
                                         try {
+                                            // Calls save method from the DayCare class
                                             dayCare.save();
+                                            // Catches and handles exceptions
                                         } catch (Exception e){
+                                            //Prints error message
                                             System.err.println("Error writing to file: " + e);
                                         }
                                     }
                                     
                                     private void loadPets(){
                                         try {
+                                            // Calls load method from the DayCare class
                                             dayCare.load();
+                                            // Catches and handles exceptions
                                         } catch (Exception e) {
+                                            //Prints error message
                                             System.err.println("Error reading from file: " + e);
                                         }
                                     }

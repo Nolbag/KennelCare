@@ -590,9 +590,9 @@ public class DayCare {
     */
     public double getWeeklyIncome(){
         double weeklyIncome = 0.0;
-        // Calulates the weekly income based on the pets in the array list based on the number of days spent in the kennel
+        // Calculates the weekly income based on the pets in the array list based on the number of days spent in the kennel
         for (Pet pet : pets){
-            // Because of polymorphism each pet is calculated at the approriate rate based on their class
+            // Because of polymorphism each pet is calculated at the appropriate rate based on their class
             weeklyIncome += pet.calculateWeeklyFee(pet.numOfDaysInKennel());
         }
         return Utilities.toTwoDecimalPlaces(weeklyIncome);
